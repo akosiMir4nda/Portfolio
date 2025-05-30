@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Christian Miranda's Portfolio</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <header>
+    <img src="profile.jpg" alt="Profile Picture" />
+    <h1>Hi, it's Christian</h1>
+    <h2 class="role"></h2>
+  </header>
+
+  <main>
+    <section id="about">
+      <h3>About Me</h3>
+      <p>
+        Hello, my name is Christian Miranda, and I am a web developer specializing in creating
+        functional, visually appealing, and user-friendly websites. With expertise in front-end
+        and back-end development, I have experience working with technologies such as HTML, CSS,
+        JavaScript, and various frameworks to build responsive and scalable web solutions.
+      </p>
+    </section>
+
+    <section id="nav-section">
+      <div class="nav-buttons">
+        <button data-target="skills" class="active">Skills</button>
+        <button data-target="experience">Experience</button>
+        <button data-target="achievements">Achievements</button>
+      </div>
+
+      <div id="skills" class="content-panel">
+        <h3>Skills</h3>
+        <ul>
+          <li data-percent="80%">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg " alt="HTML Logo" style="width: 20px; height: 20px; vertical-align: middle;" />
+            HTML
+            <div class="progress-bar">
+              <span style="--width:80%"></span>
+            </div>
+          </li>
+          <li data-percent="70%">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg " alt="CSS Logo" style="width: 20px; height: 20px; vertical-align: middle;" />
+            CSS
+            <div class="progress-bar">
+              <span style="--width:70%"></span>
+            </div>
+          </li>
+          <li data-percent="65%">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" alt="JavaScript Logo" style="width: 20px; height: 20px; vertical-align: middle;" />
+            JavaScript
+            <div class="progress-bar">
+              <span style="--width:65%"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div id="experience" class="content-panel" style="display:none;">
+        <h3>Experience</h3>
+        <p>
+          I'm a Web Developer Intern at XYZ Company, City, State for 2 years.
+        </p>
+      </div>
+
+      <div id="achievements" class="content-panel" style="display:none;">
+        <h3>Achievements</h3>
+        <p>Iron Man Triathlon 2nd placer 2020-2022</p>
+      </div>
+    </section>
+
+    <section id="showcase">
+      <h3>Showcase of My Work</h3>
+      <div class="portfolio-item" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=800&q=80" alt="Sample Project 1" />
+        <p>Responsive Website Project</p>
+      </div>
+      <div class="portfolio-item" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Sample Project 2" />
+        <p>JavaScript Web App</p>
+      </div>
+      <div class="portfolio-item" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Sample Project 3" />
+        <p>Full Stack Development</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h3>Social Media Links</h3>
+    <div class="social-links" aria-label="Social media links">
+      <a href="https://www.facebook.com/share/16XqcXVG3W/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg fill="currentColor" height="32" width="32" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22.675 0h-21.35c-.74 0-1.325.588-1.325 1.313v21.373c0 .724.585 1.314 1.325 1.314h11.495v-9.294h-3.13v-3.622h3.13v-2.67c0-3.1 1.892-4.788 4.655-4.788 1.322 0 2.46.099 2.792.143v3.237l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.59l-.467 3.622h-3.123v9.294h6.116c.74 0 1.326-.59 1.326-1.314v-21.373c0-.725-.586-1.313-1.327-1.313z"/></svg>
+      </a>
+    
+    </div>
+  </footer>
+
+  <script>
+   
+    document.addEventListener('DOMContentLoaded', () => {
+      const roleEl = document.querySelector('.role');
+      const roles = ["Web Developer", "Software Developer", "Web Designer"];
+      let i = 0;
+
+      function updateRole() {
+        roleEl.textContent = roles[i];
+        i = (i + 1) % roles.length;
+      }
+      updateRole();
+      setInterval(updateRole, 3000);
+
+     
+      const buttons = document.querySelectorAll(".nav-buttons button");
+      const panels = document.querySelectorAll(".content-panel");
+
+      buttons.forEach(button => {
+        button.addEventListener("click", () => {
+        
+          buttons.forEach(b => b.classList.remove("active"));
+          button.classList.add("active");
+
+         
+          const target = button.getAttribute("data-target");
+          panels.forEach(panel => {
+            if (panel.id === target) {
+              panel.style.display = "block";
+            } else {
+              panel.style.display = "none";
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
